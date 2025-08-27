@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suits:Homens de terno</title>
     <link rel="stylesheet" href="css/estilo.css">
@@ -9,115 +9,325 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Zen+Loop:ital@0;1&display=swap" rel="stylesheet">
-    <title>jogo</title>
- 
+     
+     <style>
+    /* ===================== CSS ===================== */
+    
+    /* Remove margens e define box-sizing */
+    * { 
+        box-sizing: border-box; 
+        margin: 0; 
+        padding: 0; }
+
+    /* Fonte e fundo da página */
+    body { 
+        font-family: Arial, sans-serif; 
+        background:#4c4c4c;
+        text-align:center; 
+        margin-top: 200px;
+    }
+    /* Cabeçalho */
+    header { 
+        background: #2c2c2d; 
+        padding: 10px; 
+        color: #fff; 
+    }
+    /* Main do jogo */
+    .mainjogo { 
+        margin-top: 40px; 
+    }
+
+    /* Contador de acertos e tempo */
+    #contador, #tempo { 
+        font-size: 20px; 
+        margin: 10px; 
+        font-weight: bold; 
+        color: #eff0f1; 
+    }
+
+    /* Mensagem final */
+    #mensagem { 
+        font-size: 22px; 
+        font-weight: bold; 
+        margin-top: 10px; 
+        color: #24c47e; 
+    }
+    /* Botões */
+    button {
+      background:#363c4f; 
+      color:#fff; 
+      border:none; 
+      padding:8px 16px;
+      border-radius:8px; 
+      cursor:pointer; 
+      font-size:16px; 
+      margin:5px;
+    }
+    button:hover { background:#5c5c65; }
+
+    /* Container das zonas */
+    
+    .jogo-container {
+        max-width: 900px; 
+        margin:20px auto; 
+        position: relative;
+        display:grid; /*Define a largura máxima do elemento,distância em cima e embaixo,organizar o conteúdo em linhas e colunas. */
+        grid-template-columns: repeat(2,1fr); 
+        grid-template-rows: repeat(2,1fr); /*Cria 2 colunas de largura igual, Cria 2 linhas de altura igual*/
+        gap:12px; border:2px solid #6c6c6d; 
+        border-radius:12px; padding:12px;
+        background:#eee; /*Cor de fundo*/
+        
+         /* imagem de fundo */
+        background-image: url("../site_Suits/img/banner.jpeg");
+        background-color: rgba(0,0,0,0.3); /* camada semi-transparente */
+        background-size: cover;          /* cobre todo o container */
+        background-repeat: no-repeat;    /* não repete */
+        background-position: center;     /* centraliza a imagem */
+    }
+
+    /* Cada zona de destino */
+    .dropzone {
+      border:2px dashed #0d0d0d; 
+      border-radius:10px; 
+      padding:10px; /*Borda,espaço interno*/
+      display:flex; 
+      flex-wrap:wrap; 
+      align-items:flex-start;
+      justify-content:flex-start; 
+      padding: 50px;
+      background-color: rgba(0, 0, 0, 0.3); /* preto com 30% de opacidade */
+      
+    }
+    .dropzone h3 { 
+        width:100%; 
+        margin-bottom:6px; 
+        font-size:16px; 
+        background-color: #eeeeee7b;
+    }
+    .topleft   { top:12px;  left:12px;  }
+    .topright   { top:12px;  right:12px; }
+    .bottomleft { bottom:12px; left:12px;}
+    .bottomright{ bottom:12px; right:12px;}
+    .dropzone.over{
+        border-style: solid;
+        box-shadow:0 0 0 3px rgba(255,255,255,.2) inset;
+    }
+
+    /* Área inicial das frases */
+    .cadaum { 
+        max-width:900px; 
+        margin:20px auto; 
+        display:flex;
+        flex-wrap:wrap; 
+        gap:10px; 
+        justify-content:center; 
+    }
+
+    /* Itens/frases */
+    .itens {
+      padding:8px 12px; 
+      border-radius:999px; 
+      background:#949393;
+      border:2px solid #48494a; 
+      color:#000000; 
+      cursor:grab; 
+      user-select:none;
+    }
+    .itens.ok { 
+        background:#97d9bd; 
+        color:#fff; 
+        border-color:#24c47e; } /* item correto */
+    .itens.nope {
+         animation: shake .25s linear 2; 
+         border-color:#de8787; } /* item incorreto */
+
+    /* Animação shake */
+    @keyframes shake { 0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);} }
+
+    @media(max-width:675px){
+        header .container, .sobre-container{
+            flex-direction: column;
+            text-align: center;
+    }
+        nav ul{
+            margin-top: 10px;
+            flex-direction: column;
+    }
+        .mainjogo{
+            margin-top: 50%;
+        }
+    }
+
+  </style>
 </head>
 <body>
-<header>
-        <div class="container">
+    <header>
+        <div class="container"> <!-- Cabeçalho -->
             <div class="logo">
                 <a href="index.html"><img src="img/logonovo.png" alt="logo"></a>
             </div>
             <nav>
                 <ul>
-                  <li><a href="index.html">Início</a></li>
-                  <li><a href="index.html#sobre">Sobre</a></li>
-                  <li><a href="index.html#personagens">Personagens </a></li>
-                  <li><a href="index.html#curiosidades">Galeria</a></li>
-                  <li><a href="index.html#jogo">Jogo</a></li>
-                   <li><a href="#contato">Contato<a></li>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#personagens">Personagens </a></li>
+                    <li><a href="#curiosidades">Galeria</a></li>
+                    <li><a href="#jogo">Jogo</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <main class="mainjogo">
-        <section id="jogo">
-          <h1> Jogo - Organize as frases </h1>
-          <p>Mova as peças a área correta</p>
-          <div class="jogo-container">
-            <div class="tema topleft" data-zone="hs">
-              <h3>Harry Specter</h3>
-            </div>
-            <div class="tema topright" data-zone="dp">
-              <h3>Donna Paulsen</h3>
-            </div>
-            <div class="tema bottomleft" data-zone="mr">
-              <h3>Mikes Ross</h3>
-            </div>
-            <div class="tema bottomright" data-zone="rz">
-              <h3> Rachel Zane</h3>
-            </div>
-          </div>
-          <div class="tray">
-            <!--Harver Spector-->
-            <div class="itens" id="p1" draggable="true" data-answers="hs">Eu não tenho sonhos, eu tenho objetivos</div>
-            <div class="itens" id="p2" draggable="true" data-answers="hs">Apenas os perdedores reclamam.</div>
-            <div class="itens" id="p3" draggable="true" data-answers="hs">Às vezes a boa pessoa precisa fazer coisas ruins para fazer a coisa certa</div>
-          
-            <!--Donna Pulsen-->
-            <div class="itens" id="p4" draggable="true" data-answers="dp">Você não me paga para concordar, me paga para ser honesta</div>
-            <div class="itens" id="p5" draggable="true" data-answers="dp">Saber é o meu trabalho. E eu sou a melhor nisso</div>
-            <div class="itens" id="p6" draggable="true" data-answers="dp">Confie em mim, eu sempre estou certa</div>
+      <!-- Main -->
+  <main class="mainjogo">
+    <div id="contador">Acertos: 0 / 12</div><!-- mostra quantos acertos -->
+    <div id="tempo">⏱️ Tempo: 00:00</div><!-- cronômetro -->
+    <div id="mensagem"></div><!-- mensagem final -->
+    <button id="reiniciar">🔄 Reiniciar</button><!-- reinicia o jogo -->
+    <button id="pausar">⏸️ Pausar</button><!-- pausa/continua -->
 
-            <!--Mike Ross-->
-          
-            <div class="itens" id="p7" draggable="true" data-answers="mr">Não importa de onde você vem, mas sim para onde você está indo</div>
-            <div class="itens" id="p8" draggable="true" data-answers="mr">O fato de eu não ter diploma não significa que eu não seja bom</div>
-            <div class="itens" id="p9" draggable="true" data-answers="mr">Eu nunca quis enganar ninguém, só queria uma chance</div>
+    <!-- Container com as zonas -->
+    <div class="jogo-container">
+      <div class="dropzone topleft" data-zone="hs"><h3>Harvey Specter</h3></div>
+      <div class="dropzone topright" data-zone="dp"><h3>Donna Paulsen</h3></div>
+      <div class="dropzone bottomleft" data-zone="mr"><h3>Mike Ross</h3></div>
+      <div class="dropzone bottomright" data-zone="rz"><h3>Rachel Zane</h3></div>
+    </div>
 
-            <!--Rachel Zane-->
-            <div class="itens" id="p10" draggable="true" data-answers="rz">Não deixe ninguém dizer que você não pode conseguir algo</div>
-            <div class="itens" id="p11" draggable="true" data-answers="rz">Se você não lutar pelo que quer, nunca vai conseguir</div>
-            <div class="itens" id="p12" draggable="true" data-answers="rz">O sucesso não é dado, é conquistado</div>
-          </div>  
-        </section>
-    </main>    
+    <!-- Frases para arrastar -->
+    <div class="cadaum" id="bandeja">
+        <!-- Harver Spector -->
+      <div class="itens" id="p1" draggable="true" data-answers="hs">Eu não tenho sonhos, eu tenho objetivos</div>
+      <div class="itens" id="p2" draggable="true" data-answers="hs">Apenas os perdedores reclamam.</div>
+      <div class="itens" id="p3" draggable="true" data-answers="hs">Às vezes a boa pessoa precisa fazer coisas ruins para fazer a coisa certa</div>
+      <!-- Donna Paulsen -->
+      <div class="itens" id="p4" draggable="true" data-answers="dp">Você não me paga para concordar, me paga para ser honesta</div>
+      <div class="itens" id="p5" draggable="true" data-answers="dp">Saber é o meu trabalho. E eu sou a melhor nisso</div>
+      <div class="itens" id="p6" draggable="true" data-answers="dp">Confie em mim, eu sempre estou certa</div>
+      <!-- Mike Ross -->
+      <div class="itens" id="p7" draggable="true" data-answers="mr">Não importa de onde você vem, mas sim para onde você está indo</div>
+      <div class="itens" id="p8" draggable="true" data-answers="mr">O fato de eu não ter diploma não significa que eu não seja bom</div>
+      <div class="itens" id="p9" draggable="true" data-answers="mr">Eu nunca quis enganar ninguém, só queria uma chance</div>
+      <!-- Rachel Zane -->
+      <div class="itens" id="p10" draggable="true" data-answers="rz">Não deixe ninguém dizer que você não pode conseguir algo</div>
+      <div class="itens" id="p11" draggable="true" data-answers="rz">Se você não lutar pelo que quer, nunca vai conseguir</div>
+      <div class="itens" id="p12" draggable="true" data-answers="rz">O sucesso não é dado, é conquistado</div>
+    </div>
+  </main>
+    <script>
+        // Seleciona todos os elementos do jogo
+        const itens = document.querySelectorAll('.itens'); // todas as frases
+        const zones = document.querySelectorAll('.dropzone'); // todas as zonas
+        const contador = document.getElementById('contador'); // mostra acertos
+        const tempoEl = document.getElementById('tempo'); // cronômetro
+        const mensagem = document.getElementById('mensagem'); // mensagem final
+        const bandeja = document.getElementById('bandeja'); // área inicial das frases
+        const reiniciarBtn = document.getElementById('reiniciar'); // botão reiniciar
+        const pausarBtn = document.getElementById('pausar'); // botão pausar/continuar
+
+        // Variáveis do jogo
+        let acertos = 0; // contador de acertos
+        const total = itens.length; // total de frases
+
+        // Variáveis do cronômetro
+        let segundos = 0;
+        let minutos = 0;
+        let cronometro = null; // armazena setInterval
+        let iniciado = false; // para iniciar cronômetro na primeira ação
+        let pausado = false; // estado de pausa
+
+        // Função que atualiza o tempo
+        function atualizarTempo(){
+            segundos++; // soma 1 segundo
+            if(segundos === 60){ minutos++; segundos = 0; } // incrementa minuto
+            let s = segundos<10?"0"+segundos:segundos;
+            let m = minutos<10?"0"+minutos:minutos;
+            tempoEl.textContent = `⏱️ Tempo: ${m}:${s}`; // atualiza display
+        }
+
+        // Inicia o cronômetro quando a primeira peça é arrastada
+        function iniciarCronometro(){
+            if(!iniciado){
+            cronometro = setInterval(atualizarTempo,1000); // chama a cada 1s
+            iniciado = true;
+            }
+        }
+
+        // Pausar ou continuar cronômetro
+        function pausarOuContinuar(){
+            if(!iniciado) return; // não faz nada se não iniciado
+            if(!pausado){
+            clearInterval(cronometro); // pausa cronômetro
+            pausado = true;
+            pausarBtn.textContent = "▶️ Continuar"; // muda texto do botão
+            }else{
+            cronometro = setInterval(atualizarTempo,1000); // retoma cronômetro
+            pausado = false;
+            pausarBtn.textContent = "⏸️ Pausar"; // muda texto do botão
+            }
+        }
+        pausarBtn.addEventListener('click', pausarOuContinuar); // associa evento ao botão
+
+        // Função para reiniciar o jogo
+        function reiniciarJogo(){
+            acertos = 0;
+            contador.textContent = `Acertos: 0 / ${total}`;
+            mensagem.textContent = "";
+            itens.forEach(it=>{
+            bandeja.appendChild(it); // volta frase para bandeja
+            it.classList.remove('ok','nope'); // remove classes
+            it.setAttribute('draggable','true'); // torna arrastável
+            it.style.cursor = 'grab'; // cursor padrão
+            });
+
+            // Reseta cronômetro
+            clearInterval(cronometro);
+            segundos=0; minutos=0; iniciado=false; pausado=false;
+            tempoEl.textContent = "⏱️ Tempo: 00:00";
+            pausarBtn.textContent = "⏸️ Pausar";
+        }
+        reiniciarBtn.addEventListener('click', reiniciarJogo); // botão reiniciar
+
+        // === Drag & Drop ===
+        itens.forEach(it=>{
+            it.addEventListener('dragstart', e=>{
+            iniciarCronometro(); // inicia cronômetro na primeira ação
+            e.dataTransfer.setData('text/plain', it.id); // armazena id do item
+            setTimeout(()=>it.classList.add('dragging'),0); // animação opcional
+            });
+            it.addEventListener('dragend', ()=>it.classList.remove('dragging')); // remove animação
+        });
+
+        zones.forEach(z=>{
+            z.addEventListener('dragover', e=>e.preventDefault()); // permite drop
+            z.addEventListener('drop', e=>{
+            e.preventDefault();
+            const id = e.dataTransfer.getData('text/plain'); // pega item arrastado
+            const piece = document.getElementById(id);
+            const allowed = (piece.dataset.answers||'').split(',').map(s=>s.trim()); // zonas corretas
+            const zoneKey = z.dataset.zone;
+
+            if(allowed.includes(zoneKey)){
+                z.appendChild(piece); // move para zona correta
+                piece.classList.add('ok'); // visual de acerto
+                piece.setAttribute('draggable','false'); // não arrastar mais
+                piece.style.cursor='default';
+                acertos++;
+                contador.textContent = `Acertos: ${acertos} / ${total}`;
+                if(acertos===total){ // final do jogo
+                clearInterval(cronometro); // para cronômetro
+                mensagem.textContent = `🎉 Parabéns! Você completou em ${minutos}:${segundos<10?"0"+segundos:segundos}!`;
+                }
+            }else{
+                piece.classList.add('nope'); // visual de erro
+                setTimeout(()=>piece.classList.remove('nope'),350); // remove animação
+            }
+            });
+        });
+    </script>
     <footer>
         <p>2025 - Criado por Maria Eduarda - Criado para fins educacionais.</p>
     </footer>
-
-    <!--Script Arrastar e Soltar.-->
-      <script>
-        const itens = document.querySelectorAll('itens')
-        const zones = document.querySelectorAll('dropzone')
-
-        items.forEach(it => {
-          it.addEventListener('dragstart', e => {
-            e.dataTransfer.setData('text/plain', it.id);
-            setTimeout(() => it.classList.add('dragging'), 0);
-          });
-          it.addEventListener('dragend', () => it.classList.remove('dragging'));
-        });
-
-         zones.forEach(z => {
-          z.addEventListener('dragover', e => e.preventDefault());
-          z.addEventListener('dragenter', () => z.classList.add('over'));
-          z.addEventListener('dragleave', () => z.classList.remove('over'));
-    
-          z.addEventListener('drop', e => {
-            e.preventDefault();
-            z.classList.remove('over');
-    
-            const id = e.dataTransfer.getData('text/plain');
-            const piece = document.getElementById(id);
-            const allowed = (piece.dataset.answers || '').split(',').map(s => s.trim());
-            const zoneKey = z.dataset.zone;
-
-            if (allowed.includes(zoneKey)) {
-              z.appendChild(piece);
-              piece.classList.add('ok');
-              piece.setAttribute('draggable','false');
-              piece.style.cursor = 'default';
-            } else {
-              piece.classList.add('nope');
-              setTimeout(() => piece.classList.remove('nope'), 350);
-            }
-          });
-        });
-
-      </script>
 </body>
 </html>
-
-
-    
