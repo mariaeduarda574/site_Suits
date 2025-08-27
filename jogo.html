@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suits:Homens de terno</title>
+    
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Zen+Loop:ital@0;1&display=swap" rel="stylesheet">
+  <title>jogo</title>
+  <style>
+    *{  margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Jersey 25", sans-serif;
+          font-weight: 400;
+          font-size: 20px;
+          font-style: normal;
+          scroll-behavior: smooth;} 
+          
+      footer{
+            text-align: center;
+            background-color: #D6D5C9;
+            margin-top: 20px;
+        }
+        p{
+            font-size: 1em;
+        }
+        h1{
+            text-align: center;
+            text-shadow: 5px 5px 5px #A22C29;
+            color: #0A100D ;
+            font-size: 2em;
+        }
+        .container{
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        body{
+            background-color: #d6d5c9;
+        }
+        header{
+            background-color: #D6D5C9;
+            color: black;
+            padding: 15px 15px 15px 15px;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid #000;
+        }
+        nav ul{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li{
+            margin-left: 25px;
+        }
+        nav ul li a {
+            color: #0A100D;
+            text-decoration: none;
+            font-size: 1.6em;
+        }
+        li a:hover{
+            background-color: #D6D5C9;
+        }
+        header .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo a{
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #0A100D;
+        }
+        .logo{
+            font-size: 2em;
+            font-weight: bold;
+        }    
+  </style>
+</head>
+<body>
+<header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img/logonovo.png" alt="logo"></a>
+            </div>
+            <nav>
+                <ul>
+                  <li><a href="index.html">Início</a></li>
+                  <li><a href="index.html#sobre">Sobre</a></li>
+                  <li><a href="index.html#personagens">Personagens </a></li>
+                  <li><a href="index.html#curiosidades">Galeria</a></li>
+                  <li><a href="index.html#jogo">Jogo</a></li>
+                   <li><a href="#contato">Contato<a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main mainjogo>
+        <section id="jogo">
+          <h1> Jogo - Organize as frases </h1>
+          <p>Mova as peças a área correta</p>
+          <div class="jogo-container">
+            <div class="Harry Specter" data-zone="hs">
+              <h3>Harry Specter"</h3>
+            </div>
+            <div class="Donna Paulsen" data-zone="dp">
+              <h3>Donna Paulsen</h3>
+            </div>
+            <div class="Mike Ross" data-zone="mr">
+              <h3>Mikes Ross</h3>
+            </div>
+            <div class="Rachel Zane" data-zone="rz">
+              <h3>🤖 Rachel Zane</h3>
+            </div>
+          </div>
+          <div class="cadaum">
+            <!--Harver Spector-->
+            <div class="itens" id="p1" draggable="true" data-answers="hs">Eu não tenho sonhos, eu tenho objetivos</div>
+            <div class="itens" id="p2" draggable="true" data-answers="hs">Apenas os perdedores reclamam.</div>
+            <div class="itens" id="p3" draggable="true" data-answers="hs">Às vezes a boa pessoa precisa fazer coisas ruins para fazer a coisa certa</div>
+          
+            <!--Donna Pulsen-->
+            <div class="itens" id="p4" draggable="true" data-answers="dp">Você não me paga para concordar, me paga para ser honesta</div>
+            <div class="itens" id="p5" draggable="true" data-answers="dp">Saber é o meu trabalho. E eu sou a melhor nisso</div>
+            <div class="itens" id="p6" draggable="true" data-answers="dp">Confie em mim, eu sempre estou certa</div>
+
+            <!--Mike Ross-->
+          
+            <div class="itens" id="p7" draggable="true" data-answers="mr">Não importa de onde você vem, mas sim para onde você está indo</div>
+            <div class="itens" id="p8" draggable="true" data-answers="mr">O fato de eu não ter diploma não significa que eu não seja bom</div>
+            <div class="itens" id="p9" draggable="true" data-answers="mr">Eu nunca quis enganar ninguém, só queria uma chance</div>
+
+            <!--Rachel Zane-->
+            <div class="itens" id="p10" draggable="true" data-answers="rz">Não deixe ninguém dizer que você não pode conseguir algo</div>
+            <div class="itens" id="p11" draggable="true" data-answers="rz">Se você não lutar pelo que quer, nunca vai conseguir</div>
+            <div class="itens" id="p12" draggable="true" data-answers="rz">O sucesso não é dado, é conquistado</div>
+          </div>  
+        </section>
+    </main>    
+    <footer>
+        <p>2025 - Criado por Maria Eduarda - Criado para fins educacionais.</p>
+    </footer>
+    <!--Script Arrastar e Soltar.-->
+      <script>
+        const itens = document.querySelectorAll('itens')
+        const zones = document.querySelectorAll('dropzone')
+
+        items.forEach(it => {
+          it.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', it.id);
+            setTimeout(() => it.classList.add('dragging'), 0);
+          });
+          it.addEventListener('dragend', () => it.classList.remove('dragging'));
+        });
+
+         zones.forEach(z => {
+          z.addEventListener('dragover', e => e.preventDefault());
+          z.addEventListener('dragenter', () => z.classList.add('over'));
+          z.addEventListener('dragleave', () => z.classList.remove('over'));
+    
+          z.addEventListener('drop', e => {
+            e.preventDefault();
+            z.classList.remove('over');
+    
+            const id = e.dataTransfer.getData('text/plain');
+            const piece = document.getElementById(id);
+            const allowed = (piece.dataset.answers || '').split(',').map(s => s.trim());
+            const zoneKey = z.dataset.zone;
+
+            if (allowed.includes(zoneKey)) {
+              z.appendChild(piece);
+              piece.classList.add('ok');
+              piece.setAttribute('draggable','false');
+              piece.style.cursor = 'default';
+            } else {
+              piece.classList.add('nope');
+              setTimeout(() => piece.classList.remove('nope'), 350);
+            }
+          });
+        });
+
+      </script>
+</body>
+</html>
+
+
+    
