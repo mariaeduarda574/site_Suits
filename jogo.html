@@ -4,87 +4,13 @@
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suits:Homens de terno</title>
-    
+    <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Zen+Loop:ital@0;1&display=swap" rel="stylesheet">
-  <title>jogo</title>
-  <style>
-    *{  margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: "Jersey 25", sans-serif;
-          font-weight: 400;
-          font-size: 20px;
-          font-style: normal;
-          scroll-behavior: smooth;} 
-          
-      footer{
-            text-align: center;
-            background-color: #D6D5C9;
-            margin-top: 20px;
-        }
-        p{
-            font-size: 1em;
-        }
-        h1{
-            text-align: center;
-            text-shadow: 5px 5px 5px #A22C29;
-            color: #0A100D ;
-            font-size: 2em;
-        }
-        .container{
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        body{
-            background-color: #d6d5c9;
-        }
-        header{
-            background-color: #D6D5C9;
-            color: black;
-            padding: 15px 15px 15px 15px;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 4px solid #000;
-        }
-        nav ul{
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        nav ul li{
-            margin-left: 25px;
-        }
-        nav ul li a {
-            color: #0A100D;
-            text-decoration: none;
-            font-size: 1.6em;
-        }
-        li a:hover{
-            background-color: #D6D5C9;
-        }
-        header .container{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo a{
-            font-size: 1em;
-            font-weight: bold;
-            text-decoration: none;
-            color: #0A100D;
-        }
-        .logo{
-            font-size: 2em;
-            font-weight: bold;
-        }    
-  </style>
+    <title>jogo</title>
+ 
 </head>
 <body>
 <header>
@@ -104,25 +30,25 @@
             </nav>
         </div>
     </header>
-    <main mainjogo>
+    <main class="mainjogo">
         <section id="jogo">
           <h1> Jogo - Organize as frases </h1>
           <p>Mova as peças a área correta</p>
           <div class="jogo-container">
-            <div class="Harry Specter" data-zone="hs">
-              <h3>Harry Specter"</h3>
+            <div class="tema topleft" data-zone="hs">
+              <h3>Harry Specter</h3>
             </div>
-            <div class="Donna Paulsen" data-zone="dp">
+            <div class="tema topright" data-zone="dp">
               <h3>Donna Paulsen</h3>
             </div>
-            <div class="Mike Ross" data-zone="mr">
+            <div class="tema bottomleft" data-zone="mr">
               <h3>Mikes Ross</h3>
             </div>
-            <div class="Rachel Zane" data-zone="rz">
-              <h3>🤖 Rachel Zane</h3>
+            <div class="tema bottomright" data-zone="rz">
+              <h3> Rachel Zane</h3>
             </div>
           </div>
-          <div class="cadaum">
+          <div class="tray">
             <!--Harver Spector-->
             <div class="itens" id="p1" draggable="true" data-answers="hs">Eu não tenho sonhos, eu tenho objetivos</div>
             <div class="itens" id="p2" draggable="true" data-answers="hs">Apenas os perdedores reclamam.</div>
@@ -149,6 +75,7 @@
     <footer>
         <p>2025 - Criado por Maria Eduarda - Criado para fins educacionais.</p>
     </footer>
+
     <!--Script Arrastar e Soltar.-->
       <script>
         const itens = document.querySelectorAll('itens')
